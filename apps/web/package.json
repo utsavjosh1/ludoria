@@ -11,6 +11,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@better-auth/client": "^0.0.2-alpha.3",
     "@repo/ui": "*",
     "next": "^15.4.2",
     "react": "^19.1.0",
