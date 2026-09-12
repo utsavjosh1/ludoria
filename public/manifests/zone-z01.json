@@ -1,0 +1,48 @@
+{
+  "manifestVersion": 1,
+  "zone": "Z01",
+  "name": "Ember Approach (test scene)",
+  "spawn": { "position": [0, 0, -10], "facingY": 0 },
+  "assets": [
+    {
+      "id": "relay-field-ring",
+      "url": "/models/z01/relay-field-ring.glb",
+      "contentVersion": "fixture",
+      "type": "glb",
+      "zones": ["Z01"],
+      "fixture": true
+    },
+    {
+      "id": "relay-pylon",
+      "url": "/models/z01/relay-pylon.glb",
+      "contentVersion": "fixture",
+      "type": "glb",
+      "zones": ["Z01"],
+      "animations": ["activate", "idle"],
+      "sockets": [{ "name": "interact", "node": "RelayPylon_Top" }],
+      "fixture": true
+    },
+    {
+      "id": "exit-gate",
+      "url": "/models/z01/exit-gate.glb",
+      "contentVersion": "fixture",
+      "type": "glb",
+      "zones": ["Z01"],
+      "fixture": true
+    },
+    {
+      "id": "spawn-marker",
+      "url": "/models/z01/spawn-marker.glb",
+      "contentVersion": "fixture",
+      "type": "glb",
+      "zones": ["Z01"],
+      "fixture": true
+    }
+  ],
+  "placements": [
+    { "asset": "relay-field-ring", "position": [0, 0, 6], "rotationY": 0, "scale": 1 },
+    { "asset": "relay-pylon", "position": [3, 0, 12], "rotationY": 0, "scale": 1 },
+    { "asset": "exit-gate", "position": [-4, 0, 22], "rotationY": 0.3, "scale": 1 },
+    { "asset": "spawn-marker", "position": [0, 0, -10], "rotationY": 0, "scale": 1 }
+  ]
+}

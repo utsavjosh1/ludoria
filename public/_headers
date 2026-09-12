@@ -1,0 +1,9 @@
+# Cloudflare Pages headers for the web build output.
+# Versioned GLBs are immutable; manifests must always revalidate so a running
+# game pins one build while new deploys update atomically.
+
+/models/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/manifests/*
+  Cache-Control: no-cache

@@ -1,52 +1,45 @@
-# Ludoria
+# Dead Letter Run
 
-A little world to get lost in. **The Wandering Valley** is a playable 2D pixel adventure written in JavaScript: explore a forest valley, meet its people, gather supplies, fight slimes, and rekindle three ancient beacons.
+A small 3D game prototype built with React, Three.js, and Rapier. Explore the
+relay field, activate the pylon, and reach the exit. Saves stay in your browser.
 
-## Play locally
+## Run
 
-Node.js 22 or newer is recommended. The standalone game has no npm dependencies to install:
-
-```sh
-npm run dev:game
-```
-
-Open http://localhost:3000. Start your journey and speak to Rowan, just north of the village square.
-
-| Control | Action |
-| --- | --- |
-| WASD / arrow keys | Move |
-| Shift | Sprint |
-| E | Talk, collect berries, open chests, light beacons |
-| Space / click world | Use the selected tool |
-| 1–5 | Sword, axe, pickaxe, lantern, berries |
-| M / J / I | Map, journal, inventory |
-| Escape | Pause / close a panel |
-
-Touch controls appear on touch devices. Progress saves on this device. Audio is off until you enable it.
-
-## Test and build
+Install [Node.js 24](https://nodejs.org/) or newer, then:
 
 ```sh
-npm run test:game
-npm run build:game
+npm install
+npm run dev
 ```
 
-Deploy `out/` to any static host. This output serves the game directly without framework JavaScript, external fonts, or CDN requests. The build verifies local modules and assets and enforces a 250 KiB uncompressed release budget.
+Open the local URL printed in the terminal (usually http://localhost:5173),
+then click **Start game**. No backend, credentials, pnpm, or build step required.
 
-## Existing workspace
+**Controls:** WASD move · Shift sprint · E interact · Esc pause.
+**Continue** resumes your saved progress on the same browser and origin.
 
-The Next.js app embeds the same game. Its original monorepo structure and database workspace are retained for later expansion:
+## Other commands
 
-```sh
-npm ci
-npm run dev --workspace web
-npm run build
+- `npm run build` — typecheck, validate assets, and build to `dist/`.
+- `npm run preview` — serve the production build locally.
+- `npm test` — run tests.
+- `npm run check` — lint, tests, and production build.
+- `npm run format` — format source and tests.
+
+Deploy `dist/` to any static web host. No server process is needed in production.
+
+## Code
+
+```text
+src/App.tsx       Menus and game session
+src/game/         React canvas host
+src/engine/       Rendering, physics, input, missions, audio, local saves
+src/contracts/    Save, mission, and asset schemas
+src/screens/      HUD and settings UI
+public/           Scene manifest and assets
+scripts/          Asset validation
+tests/            Game, schema, and UI tests
 ```
 
-The repo now uses the existing npm lockfile consistently; the stale Bun lockfile was removed. `npm run build` builds the workspace and then prepares the standalone game release.
-
-See [docs/GAME.md](docs/GAME.md) for gameplay rules, architecture, resource choices, tests, and current limitations. This release is single-player; account and multiplayer services are not implemented.
-
-## Credits
-
-Game by Utsav Joshi. Pixel assets: [Kenney Tiny Town](https://kenney.nl/assets/tiny-town) and [Tiny Dungeon](https://kenney.nl/assets/tiny-dungeon), CC0. Geist by Vercel, SIL OFL 1.1. Asset licenses are included in the game distribution.
+The current scene uses procedural placeholder geometry; no model downloads are
+needed. See [docs/assets.md](docs/assets.md) for asset notes.

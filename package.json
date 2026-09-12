@@ -1,28 +1,42 @@
 {
-  "name": "ludoria",
+  "name": "dead-letter-run",
   "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types",
-    "test:game": "node --test apps/web/tests/*.test.mjs",
-    "build:game": "node scripts/build-game.mjs",
-    "postbuild": "node scripts/build-game.mjs",
-    "dev:game": "node scripts/dev-game.mjs"
+    "dev": "vite",
+    "start": "vite",
+    "build": "npm run typecheck && npm run assets:validate && vite build",
+    "preview": "vite preview",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "assets:validate": "node scripts/validate-assets.mjs public/manifests public",
+    "check": "npm run lint && npm test && npm run build"
+  },
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "^0.20.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "three": "^0.186.0",
+    "zod": "^4.4.0"
   },
   "devDependencies": {
-    "prettier": "^3.6.2",
-    "turbo": "^2.5.5",
-    "typescript": "5.8.3"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "npm@11.9.0",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+    "@biomejs/biome": "^2.5.13",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "jsdom": "^26.1.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.2",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.0"
+  }
 }
